@@ -7,48 +7,42 @@ import { FiExternalLink } from 'react-icons/fi'
 const projects = [
   {
     title: 'Software Company Website',
-    description:
-      'A corporate website for a digital software company with modern UI and animations.',
+    description: 'A corporate website for a digital software company with modern UI and animations.',
     image: '/image/pinakee_digital.png',
     link: '#',
     tags: ['React', 'CSS', 'UI/UX'],
   },
   {
     title: 'Pharma Company Website',
-    description:
-      'Professional pharmaceutical company site with product catalog and clean design.',
+    description: 'Professional pharmaceutical company site with product catalog and clean design.',
     image: '/image/Pharma_Company.png',
     link: '#',
     tags: ['HTML', 'CSS', 'JS'],
   },
   {
     title: 'Real Estate Website',
-    description:
-      'Property listing platform with search, filters, and detailed property views.',
+    description: 'Property listing platform with search, filters, and detailed property views.',
     image: '/image/Realestate.png',
     link: '#',
     tags: ['React', 'Node.js', 'MongoDB'],
   },
   {
     title: 'E-commerce Food Website',
-    description:
-      'Online food ordering platform with cart, payment flow, and restaurant dashboard.',
+    description: 'Online food ordering platform with cart, payment flow, and restaurant dashboard.',
     image: '/image/foodwebsite.png',
     link: '#',
     tags: ['Next.js', 'NestJS', 'PostgreSQL'],
   },
   {
     title: 'Laundry Management Dashboard',
-    description:
-      'Admin dashboard for managing laundry orders, customers, and staff operations.',
+    description: 'Admin dashboard for managing laundry orders, customers, and staff operations.',
     image: '/image/LaunderyManagement_dash.png',
     link: '#',
     tags: ['React', 'Spring Boot', 'SQL'],
   },
   {
     title: 'Social Media App',
-    description:
-      'Full-stack social platform connecting talented people with real-time features.',
+    description: 'Full-stack social platform connecting talented people with real-time features.',
     image: '/image/Potfolio.png',
     link: '#',
     tags: ['React', 'Node.js', 'MongoDB'],
@@ -57,7 +51,10 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-20 bg-[#0d0d0d]">
+    <section
+      id="portfolio"
+      className="py-20 bg-slate-50 dark:bg-[#0d0d0d] transition-colors duration-300"
+    >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -66,13 +63,13 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
             My{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
               Portfolio
             </span>
           </h2>
-          <p className="text-gray-400 mt-4 text-sm">
+          <p className="text-gray-500 dark:text-gray-400 mt-4 text-sm">
             A selection of my recent work
           </p>
         </motion.div>
@@ -85,7 +82,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group relative aspect-video rounded-xl overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10"
+              className="group relative aspect-video rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10"
             >
               <Image
                 src={project.image}
@@ -93,8 +90,8 @@ export default function Portfolio() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              {/* Overlay — always dark for readability over images */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/60 to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                 <div className="flex gap-1.5 mb-2 flex-wrap">
                   {project.tags.map((tag) => (
                     <span

@@ -45,7 +45,7 @@ const skillCategories: SkillCategory[] = [
       { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
       { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
       { name: 'React.js', icon: SiReact, color: '#61DAFB' },
-      { name: 'Next.js', icon: SiNextdotjs, color: '#ffffff' },
+      { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
       { name: 'Vue.js', icon: SiVuedotjs, color: '#4FC08D' },
     ],
   },
@@ -64,7 +64,7 @@ const skillCategories: SkillCategory[] = [
     accent: '#f59e0b',
     skills: [
       { name: 'Microservices', color: '#FF6B6B' },
-      { name: 'Apache Kafka', icon: SiApachekafka, color: '#ffffff' },
+      { name: 'Apache Kafka', icon: SiApachekafka, color: '#231F20' },
       { name: 'AWS', icon: FaAws, color: '#FF9900' },
     ],
   },
@@ -92,7 +92,10 @@ export default function About() {
   const [activeTab, setActiveTab] = useState<TabName>('skills')
 
   return (
-    <section id="about" className="py-20 bg-[#0d0d0d]">
+    <section
+      id="about"
+      className="py-20 bg-slate-50 dark:bg-[#0d0d0d] transition-colors duration-300"
+    >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -102,10 +105,10 @@ export default function About() {
           className="flex flex-col lg:flex-row gap-16 items-start"
         >
           {/* Image */}
-          <div className="flex-shrink-0 mx-auto lg:mx-0">
+          <div className="shrink-0 mx-auto lg:mx-0">
             <div className="relative w-64 h-64 lg:w-72 lg:h-72">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl blur-xl" />
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-gray-700/50">
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/30 to-purple-500/30 rounded-2xl blur-xl" />
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700/50">
                 <Image
                   src="/image/fun-3d-cartoon-about-removebg-.png"
                   alt="About Soumya"
@@ -118,26 +121,27 @@ export default function About() {
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
               About{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                 Me
               </span>
             </h2>
-            <p className="text-gray-400 leading-relaxed mb-8 text-sm md:text-base">
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8 text-sm md:text-base">
               I am{' '}
-              <span className="text-white font-semibold">
+              <span className="text-gray-900 dark:text-white font-semibold">
                 Soumya Ranjan Behera
               </span>
               , a passionate Full Stack Developer and UI/UX Designer from
               India. I build scalable web applications and elegant interfaces
-              using modern technologies — from React and Next.js on the frontend
-              to NestJS, Spring Boot, and Microservices on the backend, with
-              cloud deployments on AWS and event-driven systems using Kafka.
+              using modern technologies — from React and Next.js on the
+              frontend to NestJS, Spring Boot, and Microservices on the
+              backend, with cloud deployments on AWS and event-driven systems
+              using Kafka.
             </p>
 
             {/* Tabs */}
-            <div className="flex gap-6 mb-8 border-b border-gray-800">
+            <div className="flex gap-6 mb-8 border-b border-gray-200 dark:border-gray-800">
               {(['skills', 'experience', 'education'] as TabName[]).map(
                 (tab) => (
                   <button
@@ -145,20 +149,20 @@ export default function About() {
                     onClick={() => setActiveTab(tab)}
                     className={`pb-3 text-sm font-semibold capitalize tracking-wide transition-colors duration-200 relative ${
                       activeTab === tab
-                        ? 'text-white'
-                        : 'text-gray-500 hover:text-gray-300'
+                        ? 'text-gray-900 dark:text-white'
+                        : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'
                     }`}
                   >
                     {tab}
                     {activeTab === tab && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" />
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-blue-500 to-purple-600 rounded-full" />
                     )}
                   </button>
                 )
               )}
             </div>
 
-            {/* Skills tab */}
+            {/* Skills */}
             {activeTab === 'skills' && (
               <div className="space-y-5">
                 {skillCategories.map((cat) => (
@@ -173,13 +177,10 @@ export default function About() {
                       {cat.skills.map((skill) => (
                         <span
                           key={skill.name}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-gray-900 border border-gray-700 text-gray-300 hover:border-blue-500/50 hover:text-white transition-all duration-200"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-400 dark:hover:border-blue-500/50 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
                         >
                           {skill.icon && (
-                            <skill.icon
-                              size={11}
-                              style={{ color: skill.color }}
-                            />
+                            <skill.icon size={11} style={{ color: skill.color }} />
                           )}
                           {skill.name}
                         </span>
@@ -190,7 +191,7 @@ export default function About() {
               </div>
             )}
 
-            {/* Experience tab */}
+            {/* Experience */}
             {activeTab === 'experience' && (
               <div className="space-y-3">
                 {[
@@ -212,16 +213,16 @@ export default function About() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="flex gap-4 p-4 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/30 transition-colors duration-200"
+                    className="flex gap-4 p-4 rounded-xl bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-500/30 transition-colors duration-200"
                   >
-                    <span className="text-blue-400 font-semibold text-xs whitespace-nowrap mt-0.5">
+                    <span className="text-blue-500 dark:text-blue-400 font-semibold text-xs whitespace-nowrap mt-0.5">
                       {item.year}
                     </span>
                     <div>
-                      <p className="font-semibold text-white text-sm">
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm">
                         {item.title}
                       </p>
-                      <p className="text-gray-400 text-xs mt-0.5">
+                      <p className="text-gray-500 dark:text-gray-400 text-xs mt-0.5">
                         {item.desc}
                       </p>
                     </div>
@@ -230,7 +231,7 @@ export default function About() {
               </div>
             )}
 
-            {/* Education tab */}
+            {/* Education */}
             {activeTab === 'education' && (
               <div className="space-y-3">
                 {[
@@ -247,13 +248,17 @@ export default function About() {
                 ].map((item) => (
                   <div
                     key={item.degree}
-                    className="p-4 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-purple-500/30 transition-colors duration-200"
+                    className="p-4 rounded-xl bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-500/30 transition-colors duration-200"
                   >
-                    <p className="font-semibold text-white text-sm">
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm">
                       {item.degree}
                     </p>
-                    <p className="text-blue-400 text-xs mt-1">{item.school}</p>
-                    <p className="text-gray-500 text-xs mt-0.5">{item.years}</p>
+                    <p className="text-blue-500 dark:text-blue-400 text-xs mt-1">
+                      {item.school}
+                    </p>
+                    <p className="text-gray-400 dark:text-gray-500 text-xs mt-0.5">
+                      {item.years}
+                    </p>
                   </div>
                 ))}
               </div>

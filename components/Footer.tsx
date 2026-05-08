@@ -62,7 +62,9 @@ export default function Footer() {
                   href={href}
                   aria-label={label}
                   target={href.startsWith('http') ? '_blank' : undefined}
-                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  rel={
+                    href.startsWith('http') ? 'noopener noreferrer' : undefined
+                  }
                   className="w-9 h-9 rounded-lg bg-gray-900 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-200"
                 >
                   <Icon size={15} />
